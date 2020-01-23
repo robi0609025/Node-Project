@@ -33,12 +33,10 @@ const server = http.createServer((req, res)=> {
             console.log(parsedBody);
             const message = parsedBody.split("=")[1];
             fs.writeFileSync('message.txt', message);
-        });
-        //fs.writeFileSync('message.txt', 'Dummy');
-        // res.writeHead(302, {});   
-        res.statusCode = 302; 
-        res.setHeader('Location', '/');
-        return res.end();
+            res.statusCode = 302; 
+            res.setHeader('Location', '/');
+            return res.end();
+        });       
     }
     res.setHeader('Content-Type', 'text/html');
     res.write('<html>');
